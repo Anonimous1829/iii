@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reproductor de Video</title>
+    <style>
+        /* Estilo para el contenedor del reproductor de video */
+        .video-container {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Estilo para el video */
+        video {
+            width: 100%;
+            height: auto;
+        }
+
+        /* Estilo para el botón de pantalla completa */
+        .fullscreen-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 1;
+            background-color: #ffffff;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        /* Estilo para el botón de descripción */
+        .description-button {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            z-index: 1;
+            background-color: #ffffff;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        /* Estilo para la caja de descripción */
+        .description-box {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #ffffff;
+            padding: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="video-container">
+        <video src="elias.mp4" controls></video>
+        <div class="fullscreen-button">Pantalla completa</div>
+        <div class="description-button">Descripción</div>
+        <div class="description-box">Elías es un crack</div>
+    </div>
+
+    <script>
+        // Obtener elementos del DOM
+        var video = document.querySelector('video');
+        var fullscreenButton = document.querySelector('.fullscreen-button');
+        var descriptionButton = document.querySelector('.description-button');
+        var descriptionBox = document.querySelector('.description-box');
+
+        // Agregar evento de clic al botón de pantalla completa
+        fullscreenButton.addEventListener('click', function() {
+            if (video.requestFullscreen) {
+                video.requestFullscreen();
+            } else if (video.mozRequestFullScreen) {
+                video.mozRequestFullScreen();
+            } else if (video.webkitRequestFullscreen) {
+                video.webkitRequestFullscreen();
+            } else if (video.msRequestFullscreen) {
+                video.msRequestFullscreen();
+            }
+        });
+
+        // Agregar evento de clic al botón de descripción
+        descriptionButton.addEventListener('click', function() {
+            descriptionBox.style.display = 'block';
+        });
+    </script>
+</body>
+</html>
